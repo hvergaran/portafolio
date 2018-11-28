@@ -19,6 +19,21 @@ namespace CapaNegocio
         public CN_Contratos() { }
         //FUNCIONES O METODOS
 
+        private string generadorCodigo()
+        {
+            string codigo = string.Empty;
+            Random objRandom = new Random();
+            for (int i = 0; i < 3; i++)
+            {
+                char letra = (char)objRandom.Next(65, 91);
+                codigo += letra;
+            }
+            codigo += objRandom.Next(1000, 10000);
+            codigo += "-";
+            codigo += (char)objRandom.Next(65, 91);
+            return codigo;
+        }
+
         public DataTable MostrarContratos()
         {
 
@@ -26,20 +41,18 @@ namespace CapaNegocio
             tabla = objDato.Mostrar();
             return tabla;
         }
-        public void InsertarContrato(string fechaInc, string fechaMeta, string montoMeta, string fechaFinal,string montoActual,string idColegio,string idUsuario,string idEstado)
+        public void InsertarContrato(string fechaInc, string fechaMeta, string montoMeta, string fechaFinal,string idColegio,string idUsuario,string idEstado, string idPaquete)
         {
-
-            objDato.Insertar(fechaInc, fechaMeta, Convert.ToInt32(montoMeta), fechaFinal, Convert.ToInt32(montoActual), Convert.ToInt32(idColegio), Convert.ToInt32(idUsuario), Convert.ToInt32(idEstado));
+            objDato.Insertar(generadorCodigo(),fechaInc, fechaMeta, Convert.ToInt32(montoMeta), fechaFinal, Convert.ToInt32(idColegio), Convert.ToInt32(idUsuario), Convert.ToInt32(idEstado), Convert.ToInt32(idPaquete));
         }
 
-        public void EditarContrato(string id,string fechaInc, string fechaMeta, string montoMeta, string fechaFinal, string montoActual, string idColegio, string idUsuario, string idEstado)
+        public void EditarContrato(string id,string fechaInc, string fechaMeta, string montoMeta, string fechaFinal, string idColegio, string idUsuario, string idEstado, string idPaquete)
         {
-            objDato.Editar(Convert.ToInt32(id), fechaInc, fechaMeta, Convert.ToInt32(montoMeta), fechaFinal, Convert.ToInt32(montoActual), Convert.ToInt32(idColegio), Convert.ToInt32(idUsuario), Convert.ToInt32(idEstado));
+            objDato.Editar(Convert.ToInt32(id), fechaInc, fechaMeta, Convert.ToInt32(montoMeta), fechaFinal, Convert.ToInt32(idColegio), Convert.ToInt32(idUsuario), Convert.ToInt32(idEstado), Convert.ToInt32(idPaquete));
         }
 
         public void EliminarContrato(string id)
         {
-
             objDato.Eliminar(Convert.ToInt32(id));
         }
 

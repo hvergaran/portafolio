@@ -50,9 +50,11 @@
     <Compile Include="CD_Colegios.cs" />
     <Compile Include="CD_Conexion.cs" />
     <Compile Include="CD_Contratos.cs" />
+    <Compile Include="CD_Cursos.cs" />
     <Compile Include="CD_EstadoContrato.cs" />
     <Compile Include="CD_EstadoCuota.cs" />
     <Compile Include="CD_EstadoEvento.cs" />
+    <Compile Include="CD_Paquete.cs" />
     <Compile Include="CD_Perfil.cs" />
     <Compile Include="CD_Usuarios.cs" />
     <Compile Include="DataSet1.Designer.cs">

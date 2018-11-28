@@ -54,6 +54,26 @@ namespace CapaDatos
             return tabla;
         }
 
+        public DataTable MostrarEjecutivo()
+        {
+            OracleCommand comando = new OracleCommand("select * from usuario where FK_ID_PERFIL = 3");
+            comando.Connection = conexion.AbrirConexion();
+            leer = comando.ExecuteReader();
+            tabla.Load(leer);
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
+        public DataTable MostrarEncargado()
+        {
+            OracleCommand comando = new OracleCommand("select * from usuario where FK_ID_PERFIL = 4");
+            comando.Connection = conexion.AbrirConexion();
+            leer = comando.ExecuteReader();
+            tabla.Load(leer);
+            conexion.CerrarConexion();
+            return tabla;
+        }
+
         public void Insertar(string nombre, string apellido, string correo, string password, int idPerfil)
         {
             //PROCEDIMNIENTO

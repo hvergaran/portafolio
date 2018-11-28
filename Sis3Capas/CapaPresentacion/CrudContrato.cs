@@ -66,18 +66,17 @@ namespace CapaPresentacion
                     {
                         try
                         {
-
                             fechaIncorporacion = dateTimePicker1.Value.ToShortDateString();
-                            fechaFinal = dateTimePicker2.Value.ToShortDateString();
-                            fechaMeta = dateTimePicker3.Value.ToShortDateString();
-                            objetoCN.InsertarContrato(fechaIncorporacion, fechaMeta, montoMeta.Text, fechaFinal, montoActual.Text, comboBox1.SelectedValue.ToString(), comboBox2.SelectedValue.ToString(), comboBox3.SelectedValue.ToString());
-                            MessageBox.Show("se inserto correctamente");
+                            fechaMeta = dateTimePicker2.Value.ToShortDateString();
+                            fechaFinal = dateTimePicker3.Value.ToShortDateString();
+                            objetoCN.InsertarContrato(fechaIncorporacion, fechaMeta, montoMeta.Text, fechaFinal, comboBox1.SelectedValue.ToString(), comboBox2.SelectedValue.ToString(), comboBox3.SelectedValue.ToString(), comboBox4.SelectedValue.ToString());
+                            MessageBox.Show("Se Inserto Correctamente");
                             MostrarContratos();
-                            //limpiarForm();
+                            limpiarForm();
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("no se pudo insertar los datos por: " + ex);
+                            MessageBox.Show("No se pudo insertar los datos por: " + ex);
                         }
                     }
                     else
@@ -92,12 +91,12 @@ namespace CapaPresentacion
                     try
                     {
                         fechaIncorporacion = dateTimePicker1.Value.ToShortDateString();
-                        fechaFinal = dateTimePicker2.Value.ToShortDateString();
-                        fechaMeta = dateTimePicker3.Value.ToShortDateString();
-                        objetoCN.EditarContrato(idContrato,fechaIncorporacion, fechaMeta, montoMeta.Text, fechaFinal, montoActual.Text, comboBox1.SelectedValue.ToString(), comboBox2.SelectedValue.ToString(), comboBox3.SelectedValue.ToString());
-                        MessageBox.Show("se edito correctamente");
+                        fechaMeta = dateTimePicker2.Value.ToShortDateString();
+                        fechaFinal = dateTimePicker3.Value.ToShortDateString();
+                        objetoCN.EditarContrato(idContrato,fechaIncorporacion, fechaMeta, montoMeta.Text, fechaFinal, comboBox1.SelectedValue.ToString(), comboBox2.SelectedValue.ToString(), comboBox3.SelectedValue.ToString(), comboBox4.SelectedValue.ToString());
+                        MessageBox.Show("Se Edito Correctamente");
                         MostrarContratos();
-                        //limpiarForm();
+                        limpiarForm();
                         Editar = false;
                     }
                     catch (Exception ex)
@@ -110,6 +109,18 @@ namespace CapaPresentacion
             {
                 MessageBox.Show("Favor llenar todos los campos");
             }
+        }
+
+        private void limpiarForm()
+        {
+            montoMeta.Clear();
+            dateTimePicker1.ResetText();
+            dateTimePicker2.ResetText();
+            dateTimePicker3.ResetText();
+            comboBox1.Text = "Seleccione";
+            comboBox2.Text = "Seleccione";
+            comboBox3.Text = "Seleccione";
+            comboBox4.Text = "Seleccione";
         }
 
         private void MostrarContratos()
@@ -136,33 +147,38 @@ namespace CapaPresentacion
            
             //fechaFinal = dateTimePicker3.Value;
             
-        }
-
-        
+        }        
 
         private void CargarCombo()
         {
 
             CN_Usuarios objeto1 = new CN_Usuarios();
 
-            comboBox2.DataSource = objeto1.MostrarUser();
+            comboBox2.DataSource = objeto1.MostrarEjecutivo();
             comboBox2.DisplayMember = "nombre_usuario";
             comboBox2.ValueMember = "id_usuario";
             comboBox2.Text = "Seleccione";
 
-            CN_Colegios objeto2 = new CN_Colegios();
+            CN_Cursos objeto2 = new CN_Cursos();
 
-            comboBox1.DataSource = objeto2.MostrarColegio();
-            comboBox1.DisplayMember = "razon_social_colegio";
-            comboBox1.ValueMember = "id_colegio";
+            comboBox1.DataSource = objeto2.MostrarCursos();
+            comboBox1.DisplayMember = "DESCRIPCION_CURSO";
+            comboBox1.ValueMember = "ID_CURSO";
             comboBox1.Text = "Seleccione";
 
-            CN_EstadoContrato objeto3 = new CN_EstadoContrato();
+            CN_Usuarios objeto3 = new CN_Usuarios();
 
-            comboBox3.DataSource = objeto3.MostrarEstadoContrato();
-            comboBox3.DisplayMember = "descripcion";
-            comboBox3.ValueMember = "id_contrato";
+            comboBox3.DataSource = objeto3.MostrarEncargado();
+            comboBox3.DisplayMember = "nombre_usuario";
+            comboBox3.ValueMember = "id_usuario";
             comboBox3.Text = "Seleccione";
+
+            CN_Paquete objeto4 = new CN_Paquete();
+
+            comboBox4.DataSource = objeto4.MostrarPaquetes();
+            comboBox4.DisplayMember = "DESCRIPCION";
+            comboBox4.ValueMember = "ID_PAQUETE";
+            comboBox4.Text = "Seleccione";
 
 
         }
@@ -171,7 +187,7 @@ namespace CapaPresentacion
         {
             CargarCombo();
             MostrarContratos();
-           dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd-MM-yyyy";
 
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
@@ -198,7 +214,7 @@ namespace CapaPresentacion
             {
                 Editar = true;
                 montoMeta.Text = dataGridView1.CurrentRow.Cells["MONTO_META"].Value.ToString();
-                montoActual.Text = dataGridView1.CurrentRow.Cells["MONTO_ACTUAL_CONTRATO"].Value.ToString();
+                //montoActual.Text = dataGridView1.CurrentRow.Cells["MONTO_ACTUAL_CONTRATO"].Value.ToString();
                 dateTimePicker1.Text = dataGridView1.CurrentRow.Cells["FECHA_INCORPORACION"].Value.ToString();
                 dateTimePicker2.Text = dataGridView1.CurrentRow.Cells["FECHA_META"].Value.ToString();
                 dateTimePicker3.Text = dataGridView1.CurrentRow.Cells["FECHA_FINAL"].Value.ToString();
@@ -213,6 +229,19 @@ namespace CapaPresentacion
             }
             else
                 MessageBox.Show("seleccione una fila por favor");
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                idContrato = dataGridView1.CurrentRow.Cells["ID_CONTRATO"].Value.ToString();
+                objetoCN.EliminarContrato(idContrato);
+                MessageBox.Show("Eliminado Correctamente");
+                MostrarContratos();
+            }
+            else
+                MessageBox.Show("Seleccione una fila por favor");
         }
     }
 }

@@ -60,6 +60,20 @@ namespace CapaNegocio
             return tabla;
         }
 
+        public DataTable MostrarEjecutivo()
+        {
+            DataTable tabla = new DataTable();
+            tabla = objDato.MostrarEjecutivo();
+            return tabla;
+        }
+
+        public DataTable MostrarEncargado()
+        {
+            DataTable tabla = new DataTable();
+            tabla = objDato.MostrarEncargado();
+            return tabla;
+        }
+
         public void InsertarUser(string nombre, string apellido, string correo, string password, string idPerfil)
         {
 

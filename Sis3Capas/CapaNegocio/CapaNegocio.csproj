@@ -49,9 +49,11 @@
     <Compile Include="CN_Alumnos.cs" />
     <Compile Include="CN_Colegios.cs" />
     <Compile Include="CN_Contratos.cs" />
+    <Compile Include="CN_Cursos.cs" />
     <Compile Include="CN_EstadoContrato.cs" />
     <Compile Include="CN_EstadoCuota.cs" />
     <Compile Include="CN_EstadoEvento.cs" />
+    <Compile Include="CN_Paquete.cs" />
     <Compile Include="CN_Perfil.cs" />
     <Compile Include="CN_Usuarios.cs" />
     <Compile Include="DataSet1.Designer.cs">
