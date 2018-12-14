@@ -42,6 +42,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtRut = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +85,7 @@
             this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnGuardar.Location = new System.Drawing.Point(744, 238);
+            this.btnGuardar.Location = new System.Drawing.Point(714, 273);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(184, 46);
             this.btnGuardar.TabIndex = 25;
@@ -93,7 +95,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(744, 173);
+            this.txtPassword.Location = new System.Drawing.Point(714, 208);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(184, 20);
             this.txtPassword.TabIndex = 22;
@@ -101,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(691, 176);
+            this.label4.Location = new System.Drawing.Point(661, 211);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 21;
@@ -109,7 +111,7 @@
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(744, 147);
+            this.txtCorreo.Location = new System.Drawing.Point(714, 182);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(184, 20);
             this.txtCorreo.TabIndex = 20;
@@ -118,7 +120,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(691, 150);
+            this.label3.Location = new System.Drawing.Point(661, 185);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 19;
@@ -126,7 +128,7 @@
             // 
             // txtApelldio
             // 
-            this.txtApelldio.Location = new System.Drawing.Point(744, 121);
+            this.txtApelldio.Location = new System.Drawing.Point(714, 156);
             this.txtApelldio.Name = "txtApelldio";
             this.txtApelldio.Size = new System.Drawing.Size(184, 20);
             this.txtApelldio.TabIndex = 18;
@@ -135,7 +137,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(691, 124);
+            this.label2.Location = new System.Drawing.Point(661, 159);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 17;
@@ -144,7 +146,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(744, 95);
+            this.txtNombre.Location = new System.Drawing.Point(714, 130);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(184, 20);
             this.txtNombre.TabIndex = 16;
@@ -153,7 +155,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(691, 98);
+            this.label1.Location = new System.Drawing.Point(661, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 15;
@@ -171,7 +173,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(691, 202);
+            this.label5.Location = new System.Drawing.Point(661, 237);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 23;
@@ -181,10 +183,27 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(744, 199);
+            this.comboBox1.Location = new System.Drawing.Point(714, 234);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(184, 21);
             this.comboBox1.TabIndex = 28;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(661, 106);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(27, 13);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Rut:";
+            // 
+            // txtRut
+            // 
+            this.txtRut.Location = new System.Drawing.Point(714, 103);
+            this.txtRut.Name = "txtRut";
+            this.txtRut.Size = new System.Drawing.Size(184, 20);
+            this.txtRut.TabIndex = 31;
+            this.txtRut.Leave += new System.EventHandler(this.txtRut_Leave);
             // 
             // CrudUser
             // 
@@ -192,6 +211,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(974, 434);
+            this.Controls.Add(this.txtRut);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
@@ -232,5 +253,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtRut;
     }
 }

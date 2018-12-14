@@ -74,27 +74,28 @@ namespace CapaDatos
             return tabla;
         }
 
-        public void Insertar(string nombre, string apellido, string correo, string password, int idPerfil)
+        public void Insertar(string nombre, string apellido, string correo, string password, int idPerfil, string rut)
         {
             //PROCEDIMNIENTO
 
-            OracleCommand comando = new OracleCommand("insert into USUARIO(ID_USUARIO,NOMBRE_USUARIO,APELLIDO_USUARIO,CORREO_USUARIO,PASSWORD_USUARIO,ACTIVE,FK_ID_PERFIL) values(ID_USUARIO_SEQ.nextval,:nombre, :apellido, :correo, :password, 1, :idPerfil)");
+            OracleCommand comando = new OracleCommand("insert into USUARIO(ID_USUARIO,NOMBRE_USUARIO,APELLIDO_USUARIO,CORREO_USUARIO,PASSWORD_USUARIO,ACTIVE,FK_ID_PERFIL,RUT_USUARIO) values(ID_USUARIO_SEQ.nextval,:nombre, :apellido, :correo, :password, 1, :idPerfil, :rut)");
             comando.Connection = conexion.AbrirConexion();
             comando.Parameters.Add(":nombre", nombre);
             comando.Parameters.Add(":apellido", apellido);
             comando.Parameters.Add(":correo", correo);
             comando.Parameters.Add(":password", password);
             comando.Parameters.Add(":idPerfil", idPerfil);
+            comando.Parameters.Add(":rut", rut);
             comando.ExecuteNonQuery();
             comando.Parameters.Clear();
 
         }
         
-        public void Editar(string nombre, string apellido, string correo, string password, int idPerfil, int id)
+        public void Editar(string nombre, string apellido, string correo, string password, int idPerfil, string rut, int id)
         {
 
             
-            OracleCommand comando = new OracleCommand("update USUARIO set NOMBRE_USUARIO=:nombre,APELLIDO_USUARIO=:apellido,CORREO_USUARIO=:correo,PASSWORD_USUARIO=:password,FK_ID_PERFIL=:idPerfil where ID_USUARIO=:id");
+            OracleCommand comando = new OracleCommand("update USUARIO set NOMBRE_USUARIO=:nombre,APELLIDO_USUARIO=:apellido,CORREO_USUARIO=:correo,PASSWORD_USUARIO=:password,FK_ID_PERFIL=:idPerfil,RUT_USUARIO=:rut where ID_USUARIO=:id");
             comando.Connection = conexion.AbrirConexion();
             comando.Connection = conexion.AbrirConexion();
             comando.Parameters.Add(":nombre", nombre);
@@ -102,6 +103,7 @@ namespace CapaDatos
             comando.Parameters.Add(":correo", correo);
             comando.Parameters.Add(":password", password);
             comando.Parameters.Add(":idPerfil", idPerfil);
+            comando.Parameters.Add(":rut", rut);
             comando.Parameters.Add("@id", id);
             comando.ExecuteNonQuery();
             comando.Parameters.Clear();

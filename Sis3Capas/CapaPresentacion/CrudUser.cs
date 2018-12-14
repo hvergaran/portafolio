@@ -28,14 +28,6 @@ namespace CapaPresentacion
         private string idUser = null;
         private bool Editar = false;
 
-
-
-       
-
-
-
-
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             //INSERTAR
@@ -45,7 +37,7 @@ namespace CapaPresentacion
                 {
                     try
                     {
-                        objetoCN.InsertarUser(txtNombre.Text, txtApelldio.Text, txtCorreo.Text, txtPassword.Text, comboBox1.SelectedValue.ToString());
+                        objetoCN.InsertarUser(txtNombre.Text, txtApelldio.Text, txtCorreo.Text, txtPassword.Text, comboBox1.SelectedValue.ToString(), txtRut.Text);
                         MessageBox.Show("Se Inserto Correctamente");
                         MostrarUsuarios();
                         limpiarForm();
@@ -61,7 +53,7 @@ namespace CapaPresentacion
 
                     try
                     {
-                        objetoCN.EditarUser(txtNombre.Text, txtApelldio.Text, txtCorreo.Text, txtPassword.Text, comboBox1.SelectedValue.ToString(), idUser);
+                        objetoCN.EditarUser(txtNombre.Text, txtApelldio.Text, txtCorreo.Text, txtPassword.Text, comboBox1.SelectedValue.ToString(), txtRut.Text, idUser);
                         MessageBox.Show("Se Edito Correctamente");
                         MostrarUsuarios();
                         limpiarForm();
@@ -97,6 +89,7 @@ namespace CapaPresentacion
         private void limpiarForm()
         {
             txtApelldio.Clear();
+            txtRut.Clear();
             txtCorreo.Clear();
             txtPassword.Clear();
             comboBox1.Text = "Seleccione";
@@ -195,6 +188,20 @@ namespace CapaPresentacion
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtRut_Leave(object sender, EventArgs e)
+        {
+            if (Validar.ValidarRut(txtRut.Text))
+            {
+                txtNombre.Focus();
+            }
+            else
+            {
+                MessageBox.Show("Rut Invalido");
+                txtRut.SelectAll();
+                txtRut.Focus();
+            }
         }
     }
 }

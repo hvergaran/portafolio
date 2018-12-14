@@ -74,15 +74,15 @@ namespace CapaNegocio
             return tabla;
         }
 
-        public void InsertarUser(string nombre, string apellido, string correo, string password, string idPerfil)
+        public void InsertarUser(string nombre, string apellido, string correo, string password, string idPerfil, string rut)
         {
 
-            objDato.Insertar(nombre, apellido, correo, password, Convert.ToInt32(idPerfil));
+            objDato.Insertar(nombre, apellido, correo, password, Convert.ToInt32(idPerfil), rut);
         }
         
-        public void EditarUser(string nombre, string apellido, string correo, string password, string idPerfil, string id)
+        public void EditarUser(string nombre, string apellido, string correo, string password, string idPerfil, string rut, string id)
         {
-            objDato.Editar(nombre, apellido, correo, password, Convert.ToInt32(idPerfil), Convert.ToInt32(id));
+            objDato.Editar(nombre, apellido, correo, password, Convert.ToInt32(idPerfil), rut, Convert.ToInt32(id));
         }
 
         public void EliminarUser(string id)
